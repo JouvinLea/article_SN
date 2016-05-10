@@ -1,0 +1,421 @@
+% mnras_template.tex
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+% Change log
+%
+% v3.0 May 2015
+%    Renamed to match the new package name
+%    Version number matches mnras.cls
+%    A few minor tweaks to wording
+% v1.0 September 2013
+%    Beta testing only - never publicly released
+%    First version: a simple (ish) template for creating an MNRAS paper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic setup. Most papers should leave these options alone.
+\documentclass[a4paper,fleqn,usenatbib]{mnras}
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+\usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{subfigure}
+\usepackage{placeins}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[]{The high SNR rate in the Galactic Center: origin of the cosmic rays excess?}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[L. Jouvin et al.]{
+L. Jouvin,$^{1}$\thanks{E-mail: lea.jouvin@apc.in2p3.fr}
+A. Lemi\`ere,$^{2}$
+and R. Terrier $^{3}$
+\\
+% List of institutions
+$^{1,2,3}$APC (UMR 7164, CNRS, Universit\'e Paris VII, CEA, Observatoire de Paris), Paris
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2015}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+The presence of an excess of very high energy (VHE) cosmic rays in the inner 100 pc of the Galaxy in close correlation with the massive gas complex known as the central molecular zone (CMZ) has been revealed in 2006 by the H.E.S.S. collaboration. On very large scale ($\approx$ 10 kpc), the non-thermal signature of the escaping GC cosmic rays could have been detected recently as the spectacular "Fermi bubbles". The origin of the CRs over-abundance in the GC still remains mysterious: Is it due to a single accelerator at the center or to multiple accelerators filling the region?
+
+The condition in the Galactic Center (GC) are often compared with the one of a starburst system. The high supernovae (SN) rate associated with the strong massive star formation in the region must create a sustained CR injection in the GC via the shocks produced at the time of their explosion. In order to investigate the presence of these multiple CR accelerators, we build a 3D model of CR injection and propagation with a realistic 3D gas distribution. We then compare with existing data of H.E.S.S..
+
+We discuss the CR injection in the region by a spectral and morphology comparison. We place constrains on the SNR rate and on the diffusion parameters.
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+keyword1 -- keyword2 -- keyword3
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{intro}
+An excess of CRs was discovered in the center part of our Galaxy with the detection of a hard very high energy $\gamma$-ray emission (100 GeV-100TeV) by the High Energy Stereoscopic System (H.E.S.S.). This diffuse emission is localized along the Galactic plane and is extending over 2$^\circ$ in longitude and 0.3$^\circ$ in latitude \citep{2006Natur.439..695A}. This particular region of the Galaxy contains interstellar $H_2$ gas of about $1.2-6.4 \times 10^7$ M$\rm_{\odot}$ \citep{1998A&A...331..959D} ($\sim$ 10\% of the total molecular mass of the Galaxy) in a rather complex setup of dense molecular clouds ($\approx 10^4$ $\rm cm^{-3}$) called the Central Molecular Zone (CMZ). The CMZ  extends to 300 pc in Galactic longitude and 100 pc in latitude. The close correlation of this emission with the target material suggests that the dominant component of the ridge is due to the interaction of relativistic cosmic rays (CRs) with protons in the ambient medium. The high amount of CRs deduced from this emission is between 3 and 9 times higher that of the flux measured on Earth with a harder spectrum of $\Gamma \sim \, $ 2.3. Recently, by analysing 10 years of H.E.S.S. data, \citet{2016Natur.531..476H} confirmed the presence of an extended Very High Energy (VHE) diffuse emission. They deduced a CR density that increases toward the Galactic Center (GC) and that is compatible with a 1/r profile as the one expected from a point stationary source at the GC.
+
+The SgrA complex located in the central tens pc of the Galaxy consists of different structures such as the supernovae (SN) SgrA East which the explosion seems to have occurred $10^{-4}$ years ago \citep{2013ApJ...777..146Z} as well as the central source SgrA$^\star$, a Super Massive Black Hole (SMBH) with a mass around 4$\times$ 10$^6$ M$\rm_{\odot}$ \citep{2008ApJ...689.1044G}. A single like event as SgrA East \citep{2006Natur.439..695A} producing a flat CR profile is now excluded. The SMBH is extremely inactive and is fed by the stellar winds in this region. The matter accretion rate at the Bondi radius is around $10^{-5}$ M$\rm_{\odot}$/years \citep{2003ApJ...591..891B}. In the inner regions, the matter accretion rate is below $10^{-7}$ M$\rm_{\odot}$/years \citep{2007ApJ...654L..57M}. Therefore, \citet{2013Sci...341..981W} deduced the presence of a powerful outflow evacuating the matter. \citet{2016Natur.531..476H} detailed the possible relation between the VHE emission and a stationary central source as SgrA$^\star$ where CRs acceleration could be possible in the surrounding powerful outflows \citep{2006ApJ...647.1099L, 2013Sci...341..981W}. With an actual bolometric luminosity of $10^{36}$ erg, much of the accretion power in the bondi region, $10^{39}$ erg$\rm \, s^{-1}$ \cite{2006MNRAS.367..937W}, is probably used to accelerate CR up to PeV energies.  
+
+The condition in the Galactic Center (GC) are often compared with the one of a starburst system. Around 2\% of the Galaxy's massive star formation occurs at the Center. Many Supernova Remnants (SNR) are visible through their radio and X-ray thermal emission \citep{2015MNRAS.453..172P}, and Pulsar Wind  Nebulae are also numerous in this rich part of the Galaxy \citep{2007yCat..21650173M}. Knowing that the Galaxy experiences $\sim$ 2 SN per century and assuming a regular Initial Mass Function (IMF), one can expect around 0.04 SN per century in the Galactic Center (GC) \citep{2011MNRAS.413..763C}. However it exists a large uncertainties on this rate. The range determined from stellar composition by \citet{2011MNRAS.413..763C} goes from 0.02 to 0.08 SN per century. Counting the number of SNR in the GC, \citet{2015MNRAS.453..172P} estimated a rate compatible with the previous estimation. This high supernovae (SN) rate associated with the strong massive star formation in the region must create a sustained CR injection in the GC via the shocks produced at the time of their explosion.  
+
+The GC harbors three compact and massive stars clusters: the Quintuplet, 3-5 Myrs \citep{2004ApJ...611L.105N}, the Arches, 2-3 Myrs \citep{1999ApJ...525..750F} and the central cluster surrounding SgrA$^\star$, 4-6 Myrs \citep{2013ApJ...770...44L}. Around 1/3 of the massive stars detected in the GC are located outside of these three massive starburst clusters suggesting the evidence of isolated high mass star formation \citep{2010ApJ...725..188M}. However these isolated stars could have been kicked out from the Arches or the Quintuplet cluster due to their dynamics \citep{2014A&A...566A...6H}. The presence of these young clusters at the center indicates that even if the real SN spatial distribution is unknown, it is clearly non uniform and concentrate to the center. It could therefore also create a CR excess to the center. 
+
+The total CR energy required to produce the VHE flux of the diffuse emission is around $10^{50}$ erg \citep{2006Natur.439..695A}, $\sim$ 10\% of the kinetic energy released from a SN explosion \citep{2011Ap&SS.336..257R}. Despite the fact that only one single impulsive injection could explain the energy of the diffuse emission, we have to account for the additional multiple injections due to the high supernovae rate in the region. This work aims to study the impact of SNRs in the VHE emission observed in the inner 200 pc of the Galaxy. We want to emphasize that a single scenarii of CR injection at the center \citep{2014arXiv1410.1678M, 2016Natur.531..476H} can not be studied separately from these SNRs contributions. 
+
+Several works considered one zone stationary steady state scenario to take into account these SNRs (\citet{2014ApJ...790...86Y}, \citet{2014arXiv1410.1678M}). By modelling the overall emission with a simple one zone model, we argue in section \ref{section1} that given typical diffusion coefficient values in the interstellar medium \citep{1990acr..book.....B}, diffusive escape should be dominant over advective escape. To explore the impact of the actual matter and SNR distribution, we build a 3D model of CR and gas distribution (\citep{2004MNRAS.349.1167S},\citep{2007A&A...467..611F}) described in the section \ref{model}. Finally, in section \ref{results}, we discuss the CR injection and propagation in the region through a spectral and morphology comparison with the existing H.E.S.S. data. In particular we study how the spatial distribution of random impulsive injections through-out the CMZ contributes to the CR excess seen by H.E.S.S. compare to a stationary source at the center modelling SgrA$^\star$.
+
+
+% 
+\section{One zone steady state model: Advection vs Diffusion}
+\label{section1}
+In this section, the CRs population arising from the multiple SNRs in the GC is produced by using a one zone steady-state model (\citet{2014ApJ...790...86Y}, \citet{2011MNRAS.413..763C}). In several studies as \citet{2011MNRAS.413..763C} considering this scenario, the presence of a perpendicular high speed wind (from 400 to 1000 $\rm km \, s^{-1}$) is required for the CR to escape. Taking common value for the diffusion coefficient in the interstellar medium, we argue that a diffusive escape is dominant over the advective escape.
+
+\subsubsection{Energy independant escape: Advection}
+\label{advection}
+Let us consider a steady state injection Q in a box. The CRs escape from the box due to the advection of a perpendicular wind of speed v on a length scale H ($\tau_{adv}=H/v$). We consider a typical scale for CRs to escape of H=30pc. In a steady state scenario:
+\begin{center}
+\begin{eqnarray}
+Q-\frac{N}{\tau_{adv}}=0
+\label{steadystate}
+\end{eqnarray}
+\end{center} 
+where N is the CR density and Q the power-law injection, Q=$Q_0\times$E$^{-p}$.
+
+The VHE $\gamma$-rays emission observed with H.E.S.S. present a hard spectrum with an index of 2.3 \citep{2006Natur.439..695A}. The advection beeing an energy independent escape, we can assume a proton index at the source around 2.45 and thus:
+\begin{center}
+\begin{eqnarray*}
+Q_0=4\times 10^{36} \, \rm{TeV}^{-1} s^{-1} \left(\frac{\eta}{10\%}\right) \left(\frac{E_{k}}{10^{51}erg}\right) {\left(\frac{\tau_{SN}}{10^{4} yr}\right)}^{-1}
+\label{steadystate2}
+\end{eqnarray*}
+\end{center} 
+where $\tau_{SN}$ is the recurrence time between each SNs explosion, $E_{k}$ the total energy released at the SN explosion and $\eta$ the efficiency of CRs acceleration.
+
+The $\gamma$-ray luminosity for $\gamma$-ray photons, $L_{\gamma}(>200 GeV)$, is related to the total energy of CRs, $W_{p}(>2 TeV)$=$\int_{>2 TeV} N E dE$, by the following relation:
+\begin{center}
+\begin{eqnarray*}
+L_{\gamma}(>200 GeV) \sim W_{p}(>2 TeV) \frac{n}{\tau_{pp}} \\
+L_{\gamma}=\int_{>2 TeV} Q_0 E^{-p} \frac{H}{\tau_{adv}} \frac{n}{\tau_{pp}}
+%\label{steadystate3}
+\end{eqnarray*}
+\end{center}
+
+where $\tau_{pp}$=$4.8 \times 10^{15} \left( \frac{n}{1 \, cm^{-3}}\right) \rm sec$ is the proton energy loss time scale due to neutral pion production in an environment of hydrogen gas of density n \citep{2004vhec.book.....A}.
+
+\begin{center}
+%\begin{eqnarray}
+\begin{multline}
+L_{\gamma}=3.4\times 10^{35} \, \mathrm erg \, \mathrm s^{-1} \left(\frac{\eta}{10\%}\right) \left(\frac{E_{k}}{10^{51}erg}\right) {\left(\frac{\tau_{SN}}{10^{4} \, yrs}\right)}^{-1} \left(\frac{H}{30 \, pc}\right) \\ \times {\left(\frac{v}{10^{3} \, km/s}\right)}^{-1} \left(\frac{n}{100 \, cm^{-3}}\right)
+\label{steadystate4}
+\end{multline}
+%\end{eqnarray}
+\end{center} 
+
+The measured $\gamma$-ray luminosity reported by \citep{2006Natur.439..695A} is L$_\gamma$=$3.5\times 10^{35} \, \rm erg \, s^{-1}$. Comparing this value with the equation \ref{steadystate4}, we see that even by considering the highest speed wind around 1000 km/s, the recurrence time between each SN explosion has to be high, around $10\rm^4 \, years$, in order not to overproduce the total $\gamma$-ray luminosity observed by H.E.S.S.. Moreover to reproduce the spectral index of the $\gamma$-ray spectrum \citep{2006Natur.439..695A}, we have to consider an injection spectrum with an index equal to 2.45 unusually soft for particle acceleration at SNR shock. With a softer spectrum, most of the power is injected to the low energy part and thus artificially minimizes the problem of the overproduction of the total $\gamma$-ray luminosity in the high energy part.
+The CR escape is not sufficiently fast by considering only the advection. In the next part, we discuss the case of a diffusive escape much more dominant over an advective escape. 
+
+
+
+\subsubsection{Energy dependant escape: Diffusion} 
+\label{diffusion}
+Several independent observations reveal the presence of a relatively strong and ordered magnetic field throughout the CMZ (\cite{2011IAUS..271..170F} and \cite{2014arXiv1406.7859M}). In the intercloud medium, the magnetic field is approximately poloidal on average. Indeed, numerous non thermal radio filaments (NRFs),  most of them oriented perpendicular to the galactic plane, have been detected. The strong polarization of their synchrotron emission indicates that the magnetic field points along the filaments. The field wherein the NRFs is certainly above equipartition with cosmic rays ($B_{eq}\approx 50-100$ $\mu G$) and could be in some cases as strong as 1 mG implying a magnetic energy density more than 10 000 times greater than elsewhere in the Galaxy. Outside the NRFs, the field is certainly weaker but not by a huge factor. Some evidences due to a downward break at 1.7 GHz in the diffuse radio emission from the GC indicate B $\geqslant$ 50 $\mu G$ \citep{2011MNRAS.413..763C}. However, the magnetic field in the general Interstellar Medium (ISM) could be close to the equipartion with the cosmic rays, $B_{eq}\approx 10$ $\mu G$ \citep{2005ApJ...626L..23L}.
+
+The CRs diffuse along the magnetic field lines when their Larmor radius is of the same order of magnitude as that of the wavelength of a magnetic wave $\lambda$. In this case, the particle is in resonance with the perturbation and then follows a random walk characterized by a mean free path $r_{mfp}$, where $r_{mfp}=3D/v$ with $D$ is the diffusion coefficient and $v$ the particle's speed, before being scattered. 
+
+In this section, we assume a power-law diffusion coefficient: D=$D_o {\left(E/10 \ TeV\right)}^{d}$.
+A common value of the diffusion coefficient at 10 GeV in the Galaxy is $D_{10 \, GeV} \sim 10^{28}$ $\rm cm^2s^{-1}$ \citep{1990acr..book.....B}. The diffusion time is given by $\tau_{diffusion}=H^2/(4*D)$. For this diffusion coefficient and a proton at 1 TeV, the diffusion is already more competitive than the advection since $\tau_{diffusion} < \tau_{advection}$. Some studies as \citet{2008MNRAS.387..987W} developed a model of strong turbulent magnetic field through which the hadrons must diffuse leading to a small value of the diffusion coefficient. This is why they ruled out the possibility of point source accelerators like the central black hole or the SNs along the disk and concluded with the necessity of stochastic particle acceleration. In the following, we will normalize the diffusion coefficient at 10 GeV, $D_o$, in order to have a value of $2\times 10^{29}$ $\rm cm^2s^{-1}$ at 10 TeV .
+ 
+ 
+The dependence $d$ of the diffusion coefficient depends on the turbulence spectrum of the $B$ field. We assume Kolmogorov turbulences for the diffusion coefficient (d=0.3). Since the escape is energy dependant for the diffusion, in order to reproduce the VHE $\gamma$-rays spectrum \citep{2006Natur.439..695A}, the proton spectral index is fixed to 2.15. 
+The $\gamma$-ray luminosity is given by:
+\begin{center}
+%\begin{eqnarray}
+\begin{multline}
+L_{\gamma} (10 TeV)=3.2\times 10^{35} \, \mathrm erg \, \mathrm s^{-1} \left(\frac{\eta}{10\%}\right) \left(\frac{E_{k}}{10^{51} \, erg}\right) {\left(\frac{\tau_{SN}}{2\times 10^{3} \, yrs}\right)}^{-1}  \\ \times {\left(\frac{H}{30 \, pc}\right)}^2 
+{\left(\frac{D_o}{2 \times 10^{29} \, cm^2s{-1}} \right)}^{-1} \left(\frac{n}{100 \, cm^{-3}}\right)
+\label{steadystate5}
+\end{multline}
+%\end{eqnarray}
+\end{center} 
+
+
+
+Compared to the advective escape, the injected proton spectrum is harder. The injected power is more uniformly distributed over the proton spectrum. The high energy proton escape faster from the box by considering this energy dependant escape time. Therefore, the recurrence time for the SNs has to be lower than for the advective escape. It is around $2000 \, \rm years$, in the higher range of the several SN rate estimations in the GC \citep{2011MNRAS.413..763C, 2015MNRAS.453..172P}. 
+
+
+\subsubsection{Spectral Energy Distribution for the advective and diffusive escape} 
+We compare the multiwavelenght spectral energy distribution (SED) for these one zone steady state models in the case of an advective escape (section \ref{advection}) or diffusive escape (section \ref{diffusion}) with existing radio, GeV and TeV data. In order to obtain these SEDs, we solve the kinetic equation using the software package GAMERA (mettre ref):
+
+\begin{eqnarray}
+\frac{\delta N}{\delta t} = \frac{\delta }{\delta \gamma}(PN) - \frac{N}{\tau} + Q
+\end{eqnarray}
+  where N is the spectral particle density, $\gamma$ is the particle Lorentz factor, P the energy loss rate, $\tau$ the loss time-scale and Q the source term. The energy loss processes taken into account are the ionization, synchrotron, bremsstrahlung, inverse compton (IC) and inelastic pp scattering. The particles are accelerated in the SN vicinity. The electron acceleration is limited due to the high radiative losses in strong magnetic field. We assume a maximum acceleration energy of 1 TeV for the electron and 1 PeV for the protons. Both in the advective or diffusive scenari, the efficiency for CR acceleration is fixed to 10\% of the kinetic energy released from a SN explosion and the ratio electrons/protons is equal to 5\%. The typical scale H for CRs to escape is 30pc. The escape time is related to H by $\tau_{adv}=H/v$ for the advection and $\tau_{diffusion}=H^2/(4*D)$ for the diffusion.
+  
+For the advection, we assume a power-law parent particles population, protons and electrons, with a spectral index of 2.45. The SED is represented on the figure \ref{SED}.a) with the data points in radio, GeV taken from \cite{2014arXiv1410.1678M} and in TeV from \citet{2006Natur.439..695A}. By assuming a magnetic field around 100 $\mu G$, we ensure that the model matches up well with the $\gamma$-ray spectrum observed at TeV energies and that the radio emission is not higher than the observation. We have to consider a quite high SN recurence time around $10^4$ years.
+
+The figure \ref{SED}.b represents the SED for a CR escape due to the diffusion with a power-law diffusion coefficient: D=$D_o {\left(E/10 \ TeV \right)}^{d}$ with $\rm D_o$=$2 \times 10^{29}$ $\rm cm^2s^{-1}$ and d = 0.3. For diffusive escape, the injection spectrum is harder with a spectral index of 2.15 increasing the IC and bremsstrahlung components of the total SED. As emphasized in the section \ref{diffusion}, the diffusion model matches up well with the $\gamma$-ray spectrum observed at TeV energies by assuming a smaller SN recurrence time of $2 \times 10^3$ years closer to the observations.
+
+\begin{figure}
+\centering
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/SED.png}}
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/SED_Edependant.png}}
+\caption{Spectral energy distribution (SED) of the Galactic Ridge for the steady-state energy independant escape scenario. The CR escape is due to the advection of the perpendicular wind of speed 1000 km/s on a 30 pc scale in (a) and to the diffusion in (b). We assume a power-law diffusion coefficient: D=$D_o {\left(E/10 \ GeV \right)}^{d}$ with $\rm D_o$=$2 \times 10^{29}$ $\rm cm^2s^{-1}$ and d=0.3. The spectral index of the parent particle population is fixed to 2.45 in (a) and 2.15 in (b). The SN recurrence time is fixed around ${10}^4$ years in (a) and $2 \times 10^3$ years in (b). For the IC, we considered two target photon populations: an optical radiation field (T=5000K) and far infrared radiation field (T=50 K). We assume an efficiency for CR acceleration of 10\% of the kinetic energy released from a SN explosion ($E_k$=$10^{51}$ erg \citep{2011Ap&SS.336..257R}) and a ratio electrons/protons equal to 5\%. The medium density is equal to 100 $ \rm cm^{-3}$ and the magnetic field 100 $\mu G$. Data points for the radio and GeV are taken from \citet{2014arXiv1410.1678M} and for the TeV from \citet{2006Natur.439..695A}.}
+\label{SED}
+\end{figure}
+
+
+Considering a SNs recurrence time of $2 \times 10^3$ years, even for the low energy part of the proton spectrum, the CRs have already diffused beyond the box between each SN explosion since the diffusive escape time is lower than the recurrence time. A stationary state is not reached and one can not use this approximation for modelling the SNRs in the GC. In the following, we will consider a non steady state approach important for the spectra and maximal energies. We investigate the impact of the sources distribution on the $\gamma$-ray emission morphology and CR profile with a non uniform source distribution in a 3D non steady-state model.
+
+%\begin{tabular}{|l|l|l|}
+%	\hline
+%   Model Parameters & Constant escape & Energy dependant escape \\
+%   \hline
+%   spectral index \\
+%   $E_{SN}$ \\
+%   Emin proton \\
+%   Emax proton \\
+%   Emin electrons \\ 
+%   Emax electrons\\
+%   spectral index \\
+%   ambient density \\
+%   Do/turbulences\\
+%   H \\
+%   v\\
+%   Bfield\\
+%	optical radiation field\\
+%	infrared radiation field\\	
+%	efficiency proton\\
+%	efficiency electron \\  
+%\hline 
+%\end{tabular}
+
+\section{A simple time dependent 3D model of CR injection and gamma-ray production}
+\label{model}
+In this section we describe the 3D distribution of CR and gas that we build to explore the impact of the actual matter and SNR distribution on the resulting $\gamma$-ray emission.
+
+\subsection{Distribution of CR accelerators}
+
+
+As mentioned in the section \ref{intro}, one of the major uncertainty for modelling the SNs filling the GC is their rate as well as their spatial distribution. There are evidences of a high isolated massive stars formation in the region \citep{2010ApJ...725..188M} but the spatial distribution has has to be non uniform due to the presence of young stellar cluster: the Quintuplet, 3-5 Myrs \citep{2004ApJ...611L.105N}, the Arches, 2-3 Myrs \citep{1999ApJ...525..750F} and the central cluster surrounding SgrA$^\star$, 4-6 Myrs \citep{2013ApJ...770...44L}. 
+
+The SNR rate estimation of \citet{2011MNRAS.413..763C} presents large uncertainties but they found a central value of 0.04 SN per century. To model these individual SNRs distributed in the CMZ, we generate impulsive sources distributed according to a Poisson law of recurrence time $\tau$=2500 years. We keep only the SNs with an age $>$ 1 kyr (no younger SN has been observed in the GC) and $<$ 100 kyrs since for larger times the CR density becomes negligible. We consider two SN spatial distributions. First, we use a uniform distribution in the CMZ represented by a cylinder of radius 100 pc and height 10 pc for the evidence of the high isolated massive stars. Secondly, we model a more realistic spatial distribution: uniform with a concentration of the SNs in the compact and massive stars clusters. With an estimated age of 2-3 Myrs \citep{1999ApJ...525..750F}, the Arches cluster has probably not experienced any supernova. We therefore do not include a concentration of SNs at this position. We consider a probability equal to 0.2 for a star to explode in each cluster and 0.6 in the cylinder. 
+
+As shown by \citet{2016Natur.531..476H}, the CR density profile is compatible with a 1/r profile as the one expected from a point stationary source at the GC. The CRs acceleration could be possible in the surrounding powerful outflows of the central source SgrA$^\star$ \citep{2006ApJ...647.1099L, 2013Sci...341..981W}. Therefore, we also investigate the scenario of a single stationary accelerator at the center to model SgrA$^\star$. 
+
+We assume a power-law CRs injection: $N_o E^{-a}\delta(r-r_0)\delta(t_0)$ for the impulsive injection and $N_o \delta(r-r_0) E^{-a}H(t_0)$ for the stationary source with a spectral index $a$ equal to 2 since this value is reproduced by the first order Fermi acceleration for strong shocks. Temporal differences for the CR injection are neglected, SNs are modelled by impulsive CRs injections emitted at the same time whatever their energy.  
+
+\subsection{Isotropic diffusion}
+We model the CR propagation in the GC assuming an isotropic diffusion. Indeed, the CRs diffuse along the magnetic field lines when the particle is in resonance with the perturbation  For a sufficient period of time, the interaction between the charged particles and the magnetic inhomogeneities leads to their isotropization. The global CRs' propagation in the interstellar medium is then described by the simplified transport equation \citep{1990acr..book.....B}:
+
+\begin{center}
+\begin{eqnarray}
+\dfrac{\partial f}{\partial t} +(\vec{u} \cdot \vec{\nabla})f +  D\Delta{f} = Q
+\label{transport1}
+\end{eqnarray}
+\end{center} 
+where Q is the CR injection, D$\Delta{f}$ the term describing the spatial diffusion and ($\vec{u} \cdot \vec{\nabla}$)f the convection. We consider a power-law diffusion coefficient: D=$D_o {\left(E/10 \ TeV\right)}^{d}$ and we assume Kolmogorov turbulences (d=0.3). Regarding the value of the coefficient assumed in this study, $D_o$ = $2\times 10^{29}$ $\rm cm^2s^{-1}$, the convection is negligible, and one has to resolve the very simple diffusion equation. The 3D Green function, obtained assuming a CR density equal to zero at $r=+\infty$, gives the solution for an impulsive accelerator. Integrating this solution gives the solution for a continuous source \citep{1990acr..book.....B}. 
+
+For the stationary source, there is a limit to the isotropic diffusion for the small distances from the source. The mean free path, $r\rm_{mfp}$==3D/v, of the random walk characterizing the particle's diffusion along the magnetic field lines can reach 100 pc for the highest CR energy simulated (1 PeV). For this energy, the mean free path is of the order of magnitude of the box. Therefore the diffusion approximation for this distance is wrong and we need to develop a proper approach to model the CR propagation in a ballistic regime and in particular the $\gamma$ rays flux produced since the particles are not isotropised any more. In order to avoid a diffusion approximation, we adopt a very simple solution on these distances: we fix a constant value of the CR density for the distances r $ < r_o$=$3 \times r_{mfp}$ equal to the CR density at $r=r_o$. This approach neglects the $\gamma$-ray emission from the non-isotropized CRs. The contribution of the latter should appear as a point source. This simple approach allows to properly take into account the diffuse emission under the source.
+
+
+
+
+\subsection{Matter distribution}
+\label{Matter}
+The CMZ contains interstellar $H_2$ gas spread in a rather complex setup of dense molecular clouds. Around 40\% of the matter in the molecular clouds is spread in four main complexes: Sgr A, Sgr B, Sgr C and the 1.3 complex (located to the Galactic east from Sgr B2). An additional widespread high-temperature and lower density diffuse molecular component has also been observed \citep{1998A&A...331..959D}. In order to model the 3D $\gamma$ rays distribution produced by the interaction of the CRs with the matter in the GC, one has to build a coherent 3D matter distribution. We will rely on the work of \citet{2004MNRAS.349.1167S} and \citet{2007A&A...467..611F}.
+
+The molecular line like CS or CO are the main tracers of the dense core of molecular gas. However, since our knowledge of the true gas kinematics in the GC is very limited, the methods used to convert the measured line of sight velocity into a radial distance are unreliable. A notable exception is the work of \citet{2004MNRAS.349.1167S} who derived a face-on-map of the molecular gas without any kinematics assumption, relying only on the comparison of two lines surveys: the CO 2.6-mm emission with the OH 18-cm absorption. The GC is itself an intense diffuse 18-cm continuum region. Therefore the OH line traces preferentially the matter in front of the GC where the OH absorption will preferentially arises whereas the CO line traces the molecular gas equally in the whole CMZ. They assume an axi-symetric distribution for the OH continuum emission. Assuming a total mass of $4\times 10^7$ M$\rm_{\odot}$, intermediate value of the different total mass estimations \citep{1998A&A...331..959D, 2005ApJ...632..882O, 1995PASJ...47..527S}, we can convert their face on view intensity map in a density map assuming a same scaling factor in the whole CMZ. As no information on the $\rm H_2$ vertical gas distribution is provided, following \citet{2007A&A...467..611F} we assume a gaussian decay along the Galactic latitude (figure \ref{sawada}.b). For the atomic gas, we used a HI mass around 10\% of the H2 mass in the CMZ using the spatial distribution in \citet{2007A&A...467..611F}. 
+
+The top-view of our model at a latitude b = 0$^\circ$ seen from the direction of the north Galactic pole is represented on the figure \ref{sawada}.a and the face-on-view on the figure \ref{sawada}.b. The matter is more spread along the line of sight at larger longitudes.
+
+\begin{figure}
+\centering
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/sawada_xy_b_0degre}}
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/sawada_xz.png}}
+\caption{(a) The resultant molecular top view of the Galactic Centre at the galactic latitude b = 0$^\circ$ seen from the direction of the north Galactic pole and (b) the resultant molecular face-on view of the Galactic Centre.}
+\label{sawada}
+\end{figure}
+
+%
+%
+%
+\section{Results and discussion}
+\label{results}
+
+We have simulated the injection and propagation of CRs from 1 TeV to 1 PeV in a 3D box of size $500 \, \mathrm pc \times 500\, \mathrm pc \times 50 \, \mathrm pc$ centered on the GC. The table \ref{model_param} contains the different physical parameters used for our models. The total $\gamma$-ray flux produced by the pp interaction is obtained by summing over all the energies of the incident CRs, the analytic shape found in \citet{2006PhRvD..74c4018K} for this interaction, with the CRs spectrum and the 3D matter distribution (section \ref{Matter}).  
+
+Through a spectral and morphology comparison with the existing H.E.S.S. data in the region, we place constrains on the CR injection and propagation. By integrating along the line of sight (LOS), we compute a 2D $\gamma$-ray emission map in galactic latitude and galactic longitude. A flux and spectral index map as well as a 1D galactic longitude profile are then produced in order to directly compare with H.E.S.S. observations \citep{2006Natur.439..695A}.
+
+
+\begin{table}
+\caption{Physical parameters values used for our 3D model of the CR injection and propagation}
+\label{model_param}
+\begin{tabular}{|p{4cm}|p{4cm}|}
+	\hline
+   Model Parameters & Values\\
+   \hline
+   Spectral index of the proton spectrum & 2 \\
+   Emin for the injected proton & 1 TeV \\
+   Emax for the injected proton & 1 PeV \\
+   Box size & $500 \, \mathrm pc \times 500\, \mathrm pc \times 50 \, \mathrm pc$ \\
+   Total mass  & $4\times 10^7$ $M_{\odot}$  \\
+   Do (10 TeV) & $2\times 10^{29}$ $\rm cm^2s^{-1}$ \\
+   Spectral index of the diffusion coefficient (d) & 0.3 \\
+   Power for CR acceleration & $1.5 \times 10^{38}$ $\rm erg \, s^{-1}$ (Stationary source) \\
+   $E_{SN}$ & $10^{51}$ $\rm erg$ (Impulsive source)\\
+   Efficiency for CR acceleration & 2\% (Impulsive source)\\
+   SN recurrence time & 2500 yrs (Impulsive source)\\  
+\hline 
+\end{tabular}
+\end{table}
+
+%$\quad$
+%
+\subsection{$\gamma$-rays: spectral distribution}
+The figure \ref{spectrum} compares the $\gamma$-ray spectrum of the region −0.8$^\circ < l < 0.8^\circ, |b| < 0.3^\circ$ for a stationary source at the GC or for multiple impulsive injections throughout the GC. For the SNs, we generate 100 temporal and spatial distributions. The spectrum is the median of the one hundred MC realization as well as the dispersion around this median. 
+
+We assume an intrinsic power for CR acceleration around $10^{38}$ $\rm erg \, s^{-1}$, 10\% of the Bondi accretion power \citep{2013Sci...341..981W} for the stationary source and a quite low acceleration efficiency of few percent of the kinetic energy released from a SN explosion, $E_k$=$10^{51}$ erg \citep{2011Ap&SS.336..257R} for the impulsive injections. For the central source, the power is of the same order of magnitude as the one found if the $\gamma$-rays are produced in the central cavity close to SgrA$^\star$ \citet{2016Natur.531..476H}. Using reasonable parameters on the SN rate and the diffusion, both our models reproduce the total spectrum observed with H.E.S.S. in the region \citep{2006Natur.439..695A}.
+
+
+Considering a higher efficiency close to 10\% as commonly used for SN acceleration, the resulting $\gamma$-ray flux from the SNs is larger than the observations. It is possible to decrease the SN total $\gamma$-ray flux by using a higher recurrence time between the SN explosion, by taking into account a non isotropic magnetic field morphology or by considering weakly supersonic shocks. Regarding the uncertainties on the SN rate on the GC \citep{2011MNRAS.413..763C}, it is possible to use a higher recurrence time but it seems very unlikely considering the central value found by other studies like \citet{2015MNRAS.453..172P}. Taking into account the morphology of the magnetic field observed in the GC (section \ref{diffusion}), approximately poloidal on average in the diffuse intercloud medium, considering an anisotropic diffusion coefficient higher in the direction perpendicular to the Galactic plane (GP) could be a possibility to lower the flux. Regarding the very hot medium, the shock following the explosion could be weakly supersonic. In this case, the value of the intrinsic spectrum given by the first order of Fermi acceleration would be larger than 2. 
+
+\begin{figure}
+\centering
+\subfigure{\includegraphics[width=\columnwidth]{plot/spectre_sawada_Do_24p4771212547W_int_G_38p1760912591_Mtot_40000000p0_d_0p3_dt_2500_Mtot_4e7Msun.png}}
+\caption{Median of the spectrum of the region −0.8$^\circ < l < 0.8^\circ, |b| < 0.3^\circ$ of the 100 SN temporal and spatial distributions (blue line) as well as the dispersion around the median and the spectrum for a stationary source at the GC (red). The black points are the HESS data.}
+\label{spectrum}
+\end{figure}
+%
+\subsection{CR density and $\gamma$-ray: spatial distributions}
+\subsubsection{$\gamma$-ray emission}
+On the figure \ref{profile}.b is represented in red the 1D profile along the Galactic longitude resulting from a stationary source situated at the GC. We sum up the predicted emission along the latitude b: $\rvert b \rvert <0.3^\circ$. Considering the deficit of VHE emission beyond 100 pc (in particular at l=1.3$^\circ$) relative to the available target material, \citet{2006Natur.439..695A} concluded to an impulsive injection 10 kyrs ago. A flat profile resulting from a single like event is now excluded. The stationary $\gamma$-ray profile also drops at $\rvert l \rvert >1.3$ $^\circ$ as the result of the integration of CR density with a more spread matter distribution along the line of sight (LOS) \citep{2004MNRAS.349.1167S} as observed on the figure \ref{sawada}.a. Therefore, the hypothesis of a stationary source at the GC capable to sustain a permanent injection of CRs is thus not to be excluded.
+
+The figure \ref{profile}.a represents the 1D profile of the median of the one hundred MC realization as well as the dispersion around this median for the two SNs spatial distributions. As expected, the profile predicted by the uniform SN distribution is rather flat (see green curve on figure \ref{profile}.a). As indicated by the huge dispersion around the median, the profile is highly dependent on each SNs spatial and temporal distributions. Taking into account the central clusters, one finds a distribution more peaked toward the GC. The difference between the two models is even larger for lower diffusion coefficients. 
+
+The $\gamma$-ray profile obtained from a stationary source or from a realistic SN spatial distribution (figure \ref{profile}.b) are very similar and an increase of the $\gamma$-ray emission toward the center as detected by \citet{2016Natur.531..476H} is obtained in both models. In the next part we will directly compare these models on the CR density profile.
+
+%
+\begin{figure}
+\centering
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/profil_1D_cluster_plus_uniform_dt_2500_0p3_Do_24p4771212547avec_err_std_inf_0p25TeV_15_TeV}}
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/profil_1D_cluster_plus_stationary_dt_2500_IntG_0p3_Do_24p4771212547W_int_G_38p1760912591_Mtot_40000000p0avec_err_std_inf_0p25TeV_15_TeV}}
+\caption{(a) Modelling of the VHE $\gamma$ profile along the Galactic longitude, after integrating along the line of sight and the Galactic latitude b, produced by the SNs throughout the CMZ. We generate 100 configurations of SNs. We test two spatial distributions: an uniform distribution of the SNs in the GC (green) and a distribution of the SNs taking into account the two massive cluster: the Quintuplet and the central cluster (blue). The solid lines represent the median of these 100 draws and the colored regions the dispersion around this median. (b) Modelling of the VHE $\gamma$ profile along the Galactic longitude for a distribution of the SNs taking into account the two massive cluster (blue) and for a stationary source at the GC (red).}
+\label{profile}
+\end{figure}
+%
+%
+\subsubsection{CR density profile}
+
+Using the study of \citet{2016Natur.531..476H} , it is possible to directly compare the CR density profile of our models with the one obtained from H.E.S.S. data. \citet{2016Natur.531..476H} extracted the VHE $\gamma$-ray luminosity within seven circular regions of radius 0.1 degrees distributed along the Galactic Plane. They deduced for each of these regions the average cosmic-ray density integrated over the line of sight as function of the projected distance (at 8.5 kpc) from SgrA$^\star$. The masses are integrated along the line of sight within the regions based on the line emission from the CS molecule. They deduced the energy density of CR above 10 TeV (those producing VHE $\gamma$-rays above 1 TeV) needed to explain the $\gamma$-ray luminosities scales as $L_{\gamma}$/$M_{gas}$ in each of these regions. The figure \ref{CRenhancement} presents the average CR enhancement within these regions \citep{2016Natur.531..476H}  compared with the local CR energy density measured in the Solar neighbourhood at those energies which is $w0(> 10 TeV) \approx 10^{-3}$ eV/cm3.
+
+In order to compare our models with these results, we determine the average energy density of CR above 10 TeV along the LOS by weighting the CR density by our matter distribution:
+\begin{center}
+\begin{eqnarray}
+n_{CR}(x,z) = \frac{\int_{y} L_{\gamma}(x,y,z) \times n(x,y,z) \, dy }{\int_{y} n(x,y,z) \, dy }
+\end{eqnarray}
+\end{center}
+where $n_{CR}$ is the CR density in Galactic latitude (z) and Galactic longitude (x), n(x,y,z) the CR density in each pixel of the 3D box, $L_{\gamma}(x,y,z)$ the $\gamma$-ray luminosity and y the direction along the LOS.
+
+In this approach, the CR density profiles for the SNs model and the stationary source presented on the figure \ref{CRenhancement} are independent of the total molecular mass assumed in our model. This is a significant difference with the data points extracted in \citet{2016Natur.531..476H} where the absolute error on the conversion of CS line into $\mathrm H_2$ column density has to be taken into account for the data points on the figure \ref{CRenhancement}. We thus have to consider a correction factor between our models and the data from \citet{2016Natur.531..476H}  due to the incertitude on the total mass used.
+
+As proposed by \citet{2016Natur.531..476H}, a stationary source at the GC fit very well all the H.E.S.S. data points. Regarding the median of the SN configurations, the CR density presents also a gradient toward the larger distances. Even if the profile is flatter at the center than for a stationary source, a significant contribution of the SNs at the center is not to exclude taking into account the huge dispersion around the median. At distance superior to 50 pc both models could explain the CR density. 
+
+Even if an excess of CR and VHE $\gamma$-ray emission is observed toward the center and well reproduced by a stationary source at the center, it is not possible to conclude that SgrA$^\star$ is the only source responsible for all the VHE emission observed with H.E.S.S. in the GC. Indeed, we shown that, by using reasonable parameters for the temporal and spatial distribution of the SNs in the GC, SNs have a major contribution to the VHE emission in particular to larger longitudes. Considering a scenario with only SgrA$^\star$ would imply to retrieve the SNs contribution by assuming a very low acceleration efficiency of the SNs in the GC whereas there is no evidence for such a low efficiency regarding the physical condition in this region.
+%
+\begin{figure}
+\centering
+\subfigure[]{\includegraphics[width=\columnwidth]{plot/CRdensityenhancement_amas_plus_stationary_source_dt_2500_sawada_0p3_Do_24p4771212547W_int_G_38p1760912591_Mtot_40000000p0_avec_err_std_inf_0p25TeV_15_TeV_efftimes_1p4}}
+\caption{Average CR enhancement within seven circular regions of radius 0.1 degrees distributed along the Galactic Plane \citep{2016Natur.531..476H}  compared with the local CR energy density measured in the Solar neighbourhood at those energies which is $w0(> 10 TeV) \approx 10^{-3}$ eV/cm3 (black points). Average CR enhancement for a stationary source situated at the GC (red) and for the SNs modelling taking into account the two massive cluster for the spatial distribution (blue). These profiles are the mean of the profiles for galactic latitudes b: $\rvert b \rvert <0.1^\circ$.}
+\label{CRenhancement}
+\end{figure}
+
+\section{Conclusion}
+TO
+%
+%\section*{Acknowledgements}
+%
+%The Acknowledgements section is not numbered. Here you can thank helpful
+%colleagues, acknowledge funding agencies, telescopes and facilities used etc.
+%Try to keep it short.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+%
+%% The best way to enter references is to use BibTeX:
+%
+\bibliographystyle{mnras}
+\bibliography{biblio} % if your bibtex file is called example.bib
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+%\appendix
+%
+%\section{Some extra material}
+%
+%If you want to present additional material which would interrupt the flow of the main paper,
+%it can be placed in an Appendix which appears after the list of references.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
+
+% End of mnras_template.tex
